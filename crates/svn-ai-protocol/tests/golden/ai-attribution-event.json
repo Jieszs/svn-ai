@@ -1,0 +1,31 @@
+{
+  "schema_version": "svn-ai/1.0.0",
+  "event_id": "0199-0000-7000-8000-000000000001",
+  "device_id": "device-001",
+  "client_version": "0.1.0",
+  "svn_username": "zhengjie",
+  "repository_uuid": "f81d4fae-7dec-11d0-a765-00a0c91e6bf6",
+  "repository_root_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "base_revision": 123,
+  "session_id_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "tool_use_id_digest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "tool": "edit",
+  "occurred_at": "2026-09-08T06:00:00Z",
+  "model_id": "claude::deepseek-v4-flash-0731",
+  "path": "src/main.rs",
+  "hunks": [
+    {
+      "old_start": 0,
+      "old_len": 0,
+      "new_start": 0,
+      "new_line_digests": [
+        "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      ],
+      "new_context_digests": [
+        "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "1111111111111111111111111111111111111111111111111111111111111111"
+      ]
+    }
+  ]
+}

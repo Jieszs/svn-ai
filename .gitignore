@@ -1,0 +1,7 @@
+/target/
+/.env
+*.key
+*.pem
+*.sqlite
+*.sqlite3
+/.worktrees/
