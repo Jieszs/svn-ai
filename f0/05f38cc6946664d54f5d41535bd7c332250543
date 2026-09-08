@@ -1,0 +1,38 @@
+.gitignore
+  h_f7ba1f5fa433aa 1-7
+Cargo.lock
+  h_f7ba1f5fa433aa 1-241
+Cargo.toml
+  h_f7ba1f5fa433aa 1-29
+README.md
+  h_f7ba1f5fa433aa 1-7
+crates/svn-ai-core/Cargo.toml
+  h_f7ba1f5fa433aa 1-18
+crates/svn-ai-core/src/lib.rs
+  h_f7ba1f5fa433aa 1
+crates/svn-ai-protocol/Cargo.toml
+  h_f7ba1f5fa433aa 1-15
+crates/svn-ai-protocol/src/events.rs
+  h_f7ba1f5fa433aa 1-86
+crates/svn-ai-protocol/src/identity.rs
+  h_f7ba1f5fa433aa 1-137
+crates/svn-ai-protocol/src/lib.rs
+  h_f7ba1f5fa433aa 1-10
+crates/svn-ai-protocol/tests/golden/ai-attribution-event.json
+  h_f7ba1f5fa433aa 1-31
+crates/svn-ai-protocol/tests/json_contract.rs
+  h_f7ba1f5fa433aa 1-29
+rust-toolchain.toml
+  h_f7ba1f5fa433aa 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "f005f38cc6946664d54f5d41535bd7c332250543",
+  "prompts": {},
+  "humans": {
+    "h_f7ba1f5fa433aa": {
+      "author": "zhengjie <601116847@qq.com>"
+    }
+  }
+}
