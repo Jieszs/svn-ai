@@ -1,0 +1,18 @@
+crates/svn-ai-core/src/fingerprint.rs
+  h_f7ba1f5fa433aa 1-96
+crates/svn-ai-core/src/lib.rs
+  h_f7ba1f5fa433aa 1,3
+crates/svn-ai-core/tests/fingerprint.rs
+  h_f7ba1f5fa433aa 1-64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "35e3e09fd9042b1726e91d75671d281e4b72b3e6",
+  "prompts": {},
+  "humans": {
+    "h_f7ba1f5fa433aa": {
+      "author": "zhengjie <601116847@qq.com>"
+    }
+  }
+}
