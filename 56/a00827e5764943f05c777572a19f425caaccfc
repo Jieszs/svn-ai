@@ -1,0 +1,24 @@
+.gitattributes
+  h_f7ba1f5fa433aa 1-4
+README.md
+  h_f7ba1f5fa433aa 3,5,7-35
+crates/svn-ai-core/src/edit.rs
+  h_f7ba1f5fa433aa 3-4,33-67
+crates/svn-ai-core/src/lib.rs
+  h_f7ba1f5fa433aa 5
+crates/svn-ai-core/tests/end_to_end.rs
+  h_f7ba1f5fa433aa 1-66
+docs/superpowers/plans/2026-09-08-phase-1-core-protocol.md
+  h_f7ba1f5fa433aa 417
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "56a00827e5764943f05c777572a19f425caaccfc",
+  "prompts": {},
+  "humans": {
+    "h_f7ba1f5fa433aa": {
+      "author": "zhengjie <601116847@qq.com>"
+    }
+  }
+}
