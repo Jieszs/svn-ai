@@ -1,0 +1,18 @@
+crates/svn-ai-core/src/edit.rs
+  h_f7ba1f5fa433aa 1-87
+crates/svn-ai-core/src/lib.rs
+  h_f7ba1f5fa433aa 1,4
+crates/svn-ai-core/tests/edit.rs
+  h_f7ba1f5fa433aa 1-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "ef7fb1251412a7859e9510eb3528000051b83d9a",
+  "prompts": {},
+  "humans": {
+    "h_f7ba1f5fa433aa": {
+      "author": "zhengjie <601116847@qq.com>"
+    }
+  }
+}
