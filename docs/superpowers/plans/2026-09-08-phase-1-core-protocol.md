@@ -414,7 +414,7 @@ Expected: the test fails until protocol-to-core conversion helpers exist.
 
 - [ ] **Step 3: Add the minimum conversion helpers**
 
-Implement `TryFrom<&svn_ai_protocol::AttributionHunk> for HunkAttribution` and typed digest conversions. Conversion rejects malformed digest lengths and a protocol hunk whose line and context arrays have different lengths.
+Implement `From<&EditHunk> for svn_ai_protocol::AttributionHunk` and `TryFrom<&svn_ai_protocol::AttributionHunk> for EditHunk`. Hunk shape conversion rejects a protocol hunk whose line and context arrays have different lengths. Keep `HunkAttribution` separate because its event ID and hunk index come from the enclosing event and the matcher, not from the hunk payload itself.
 
 - [ ] **Step 4: Run formatting, linting, and all tests**
 

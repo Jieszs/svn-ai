@@ -1,6 +1,7 @@
 use imara_diff::{Algorithm, Diff, Interner};
 use serde::{Deserialize, Serialize};
-use svn_ai_protocol::Digest;
+use svn_ai_protocol::{AttributionHunk as ProtocolAttributionHunk, Digest};
+use thiserror::Error;
 
 use crate::{FingerprintKey, fingerprint_lines};
 
@@ -27,6 +28,41 @@ impl EditHunk {
             .try_into()
             .expect("imara-diff limits inputs to fewer than u32::MAX lines")
     }
+}
+
+impl From<&EditHunk> for ProtocolAttributionHunk {
+    fn from(value: &EditHunk) -> Self {
+        Self {
+            old_start: value.old_start,
+            old_len: value.old_len,
+            new_start: value.new_start,
+            new_line_digests: value.new_line_digests.clone(),
+            new_context_digests: value.new_context_digests.clone(),
+        }
+    }
+}
+
+impl TryFrom<&ProtocolAttributionHunk> for EditHunk {
+    type Error = HunkConversionError;
+
+    fn try_from(value: &ProtocolAttributionHunk) -> Result<Self, Self::Error> {
+        if value.new_line_digests.len() != value.new_context_digests.len() {
+            return Err(HunkConversionError::DigestCountMismatch);
+        }
+        Ok(Self {
+            old_start: value.old_start,
+            old_len: value.old_len,
+            new_start: value.new_start,
+            new_line_digests: value.new_line_digests.clone(),
+            new_context_digests: value.new_context_digests.clone(),
+        })
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Error)]
+pub enum HunkConversionError {
+    #[error("protocol hunk has different line and context digest counts")]
+    DigestCountMismatch,
 }
 
 pub fn diff_files(before: &[u8], after: &[u8], key: &FingerprintKey) -> EditScript {
