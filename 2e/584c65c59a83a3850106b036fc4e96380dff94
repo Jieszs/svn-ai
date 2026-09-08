@@ -1,0 +1,18 @@
+crates/svn-ai-core/src/lib.rs
+  h_f7ba1f5fa433aa 3,7-9
+crates/svn-ai-core/src/provenance.rs
+  h_f7ba1f5fa433aa 1-258
+crates/svn-ai-core/tests/provenance.rs
+  h_f7ba1f5fa433aa 1-103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "2e584c65c59a83a3850106b036fc4e96380dff94",
+  "prompts": {},
+  "humans": {
+    "h_f7ba1f5fa433aa": {
+      "author": "zhengjie <601116847@qq.com>"
+    }
+  }
+}
