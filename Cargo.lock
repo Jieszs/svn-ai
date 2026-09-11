@@ -198,6 +198,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "svn-ai-svn"
+version = "0.1.0"
+dependencies = [
+ "svn-ai-protocol",
+ "thiserror",
+]
+
+[[package]]
 name = "syn"
 version = "3.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"

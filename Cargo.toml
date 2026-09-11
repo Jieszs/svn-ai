@@ -2,6 +2,7 @@
 members = [
     "crates/svn-ai-core",
     "crates/svn-ai-protocol",
+    "crates/svn-ai-svn",
 ]
 resolver = "2"
 
