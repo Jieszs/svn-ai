@@ -1,0 +1,24 @@
+crates/svn-ai-core/src/matching.rs
+  s_ffb4fb4f8482bd::t_7bdf758c997372 1-109
+crates/svn-ai-core/src/lib.rs
+  s_ffb4fb4f8482bd::t_7bdf758c997372 3,8
+crates/svn-ai-core/tests/matching.rs
+  s_ffb4fb4f8482bd::t_c01488effaa61d 1-233
+  s_ffb4fb4f8482bd::t_68bccaecf0ab2f 234-273
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c9ccd5b9a51157d0cd963e9596aecc4aacde484f",
+  "prompts": {},
+  "sessions": {
+    "s_ffb4fb4f8482bd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a040f6-fda5-7f10-a52f-4d3c76f0ab4b",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "zhengjie <601116847@qq.com>"
+    }
+  }
+}
