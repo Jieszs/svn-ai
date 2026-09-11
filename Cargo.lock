@@ -201,6 +201,7 @@ dependencies = [
 name = "svn-ai-svn"
 version = "0.1.0"
 dependencies = [
+ "svn-ai-core",
  "svn-ai-protocol",
  "thiserror",
 ]
