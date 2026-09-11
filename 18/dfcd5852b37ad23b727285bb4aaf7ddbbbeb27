@@ -1,0 +1,39 @@
+Cargo.lock
+  s_ffb4fb4f8482bd::t_15a0b971fc57a6 5-63,70-75,89-94,111-168,175-180,202-236,246-251,258-281,292-297,304-314,321-326,333-359,378-389,417,439-450,483-508,537,546-676
+scripts/verify-svn-e2e.ps1
+  s_ffb4fb4f8482bd::t_a8a703fc79a3ba 1-25
+tests/e2e/Dockerfile
+  s_ffb4fb4f8482bd::t_a8a703fc79a3ba 1-6
+Cargo.toml
+  s_ffb4fb4f8482bd::t_a99df8a246a0df 6,20
+README.md
+  s_ffb4fb4f8482bd::t_8c7faf55eb72f4 54
+  s_ffb4fb4f8482bd::t_9486b449bd83f2 11,14-16,18,34-53
+crates/svn-ai-validate/src/main.rs
+  s_ffb4fb4f8482bd::t_a99df8a246a0df 1-150
+  s_ffb4fb4f8482bd::t_eedd71596d0b07 151
+tests/e2e/svn_round_trip.sh
+  s_ffb4fb4f8482bd::t_a8a703fc79a3ba 1-66
+docs/superpowers/plans/2026-09-11-svn-e2e-validation.md
+  s_ffb4fb4f8482bd::t_9486b449bd83f2 36-40,53-57,70-74,89-93
+  s_ffb4fb4f8482bd::t_929c79a0d7a2c0 94
+  s_ffb4fb4f8482bd::t_dad88250eb1d9c 95
+crates/svn-ai-validate/Cargo.toml
+  s_ffb4fb4f8482bd::t_a99df8a246a0df 1-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "18dfcd5852b37ad23b727285bb4aaf7ddbbbeb27",
+  "prompts": {},
+  "sessions": {
+    "s_ffb4fb4f8482bd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a040f6-fda5-7f10-a52f-4d3c76f0ab4b",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": null
+    }
+  }
+}
