@@ -33,11 +33,11 @@
 - Consumes: `svn_ai_protocol::{ChangeKind, CopyFrom, RepoPath}`.
 - Produces: `parse_changed(&str) -> Result<Vec<ChangedPath>, ChangedParseError>` and `ChangedPath { path, kind, copy_from, text_changed, properties_changed }`.
 
-- [ ] **Step 1: Write failing parser tests** covering add, modify, delete, property-only changes, paths containing spaces, copy-from records, directories, and malformed copy metadata.
-- [ ] **Step 2: Run `cargo test -p svn-ai-svn --test changed`** and confirm failure because the crate/API does not exist.
-- [ ] **Step 3: Implement the minimal status-column and copy-info parser** without locale-dependent prose except the stable `(from PATH:rREV)` record emitted by Subversion 1.7.
-- [ ] **Step 4: Run `cargo test -p svn-ai-svn --test changed`** and confirm all parser tests pass.
-- [ ] **Step 5: Commit** with message `feat: parse svnlook changed output`.
+- [x] **Step 1: Write failing parser tests** covering add, modify, delete, property-only changes, paths containing spaces, copy-from records, directories, and malformed copy metadata.
+- [x] **Step 2: Run `cargo test -p svn-ai-svn --test changed`** and confirm failure because the crate/API does not exist.
+- [x] **Step 3: Implement the minimal status-column and copy-info parser** without locale-dependent prose except the stable `(from PATH:rREV)` record emitted by Subversion 1.7.
+- [x] **Step 4: Run `cargo test -p svn-ai-svn --test changed`** and confirm all parser tests pass.
+- [x] **Step 5: Commit** with message `feat: parse svnlook changed output`.
 
 ### Task 2: Read a real revision through svnlook
 
@@ -50,11 +50,11 @@
 - Consumes: `parse_changed`, `svn_ai_core::diff_files`, `FingerprintKey`.
 - Produces: `SvnLook::new(PathBuf)`, `SvnLook::read_revision(&Path, i64, &FingerprintKey) -> Result<RevisionEvent, SvnLookError>`.
 
-- [ ] **Step 1: Write failing tests** using a deterministic command fixture that exercises exact argument construction, UTF-8 path handling, add/modify/delete content lookup, UUID/author/date extraction, and non-zero command exits.
-- [ ] **Step 2: Run `cargo test -p svn-ai-svn --test revision`** and confirm failure because the reader is missing.
-- [ ] **Step 3: Implement the command boundary and revision reader** using only the Subversion 1.7-compatible commands listed in the global constraints.
-- [ ] **Step 4: Run `cargo test -p svn-ai-svn --test revision`** and confirm all reader tests pass.
-- [ ] **Step 5: Commit** with message `feat: read svn revisions with svnlook`.
+- [x] **Step 1: Write failing tests** using a deterministic command fixture that exercises exact argument construction, UTF-8 path handling, add/modify/delete content lookup, UUID/author/date extraction, and non-zero command exits.
+- [x] **Step 2: Run `cargo test -p svn-ai-svn --test revision`** and confirm failure because the reader is missing.
+- [x] **Step 3: Implement the command boundary and revision reader** using only the Subversion 1.7-compatible commands listed in the global constraints.
+- [x] **Step 4: Run `cargo test -p svn-ai-svn --test revision`** and confirm all reader tests pass.
+- [x] **Step 5: Commit** with message `feat: read svn revisions with svnlook`.
 
 ### Task 3: Match recorded AI lines to committed SVN lines
 
@@ -67,11 +67,11 @@
 - Consumes: protocol `AttributionEvent` and `RevisionFileChange` fingerprints.
 - Produces: `match_attribution(&RevisionEvent, &[AttributionEvent]) -> AttributionMetrics` with total additions, AI additions, non-AI additions, and ambiguous additions.
 
-- [ ] **Step 1: Write failing tests** for an exact ten-line match, two manually rewritten lines, unrelated paths/users/repositories, duplicate-line ambiguity, and one-time event consumption.
-- [ ] **Step 2: Run `cargo test -p svn-ai-core --test matching`** and confirm failure because the matcher is missing.
-- [ ] **Step 3: Implement deterministic one-to-one matching** by repository UUID, SVN username, repository path, base revision, line digest, and context digest; unresolved duplicates are ambiguous rather than AI.
-- [ ] **Step 4: Run `cargo test -p svn-ai-core --test matching`** and confirm all matcher tests pass.
-- [ ] **Step 5: Commit** with message `feat: match AI lines to SVN revisions`.
+- [x] **Step 1: Write failing tests** for an exact ten-line match, two manually rewritten lines, unrelated paths/users/repositories, duplicate-line ambiguity, and one-time event consumption.
+- [x] **Step 2: Run `cargo test -p svn-ai-core --test matching`** and confirm failure because the matcher is missing.
+- [x] **Step 3: Implement deterministic one-to-one matching** by repository UUID, SVN username, repository path, base revision, line digest, and context digest; unresolved duplicates are ambiguous rather than AI.
+- [x] **Step 4: Run `cargo test -p svn-ai-core --test matching`** and confirm all matcher tests pass.
+- [x] **Step 5: Commit** with message `feat: match AI lines to SVN revisions`.
 
 ### Task 4: Add and execute the real SVN validation harness
 
@@ -86,10 +86,10 @@
 - Consumes: `SvnLook::read_revision`, `diff_files`, protocol events, and `match_attribution`.
 - Produces: `svn-ai-validate capture` and `svn-ai-validate verify --json`; the PowerShell entry point runs the complete Docker-hosted SVN scenario.
 
-- [ ] **Step 1: Write the shell acceptance test first** so it calls the not-yet-existing CLI and asserts literal JSON metrics: `svn_additions=10`, `ai_additions=8`, `non_ai_additions=2`, `ambiguous_additions=0`.
-- [ ] **Step 2: Run `powershell -ExecutionPolicy Bypass -File scripts/verify-svn-e2e.ps1`** and confirm failure because the validation CLI is absent.
-- [ ] **Step 3: Implement the CLI** so `capture` emits fingerprint-only attribution JSON and `verify` reads the real repository revision with `svnlook`, validates identity, and emits metrics JSON.
-- [ ] **Step 4: Run the PowerShell entry point** and confirm a real `svnadmin create` / `svn checkout` / `svn commit` round trip returns the four expected metrics.
-- [ ] **Step 5: Update README** with current scope, exact commands, expected output, and the remaining requirement for a final smoke test on the bank's VisualSVN 2.5.2 host.
-- [ ] **Step 6: Run full verification:** `cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test --workspace`, and the Docker SVN round trip.
-- [ ] **Step 7: Commit** with message `test: validate attribution through a real SVN commit`.
+- [x] **Step 1: Write the shell acceptance test first** so it calls the not-yet-existing CLI and asserts literal JSON metrics: `svn_additions=10`, `ai_additions=8`, `non_ai_additions=2`, `ambiguous_additions=0`.
+- [x] **Step 2: Run `powershell -ExecutionPolicy Bypass -File scripts/verify-svn-e2e.ps1`** and confirm failure because the validation CLI is absent.
+- [x] **Step 3: Implement the CLI** so `capture` emits fingerprint-only attribution JSON and `verify` reads the real repository revision with `svnlook`, validates identity, and emits metrics JSON.
+- [x] **Step 4: Run the PowerShell entry point** and confirm a real `svnadmin create` / `svn checkout` / `svn commit` round trip returns the four expected metrics.
+- [x] **Step 5: Update README** with current scope, exact commands, expected output, and the remaining requirement for a final smoke test on the bank's VisualSVN 2.5.2 host.
+- [x] **Step 6: Run full verification:** `cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test --workspace`, and the Docker SVN round trip.
+- [x] **Step 7: Commit** with message `test: validate attribution through a real SVN commit`.
