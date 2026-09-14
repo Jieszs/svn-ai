@@ -15,14 +15,13 @@ struct FixtureRunner {
 
 impl FixtureRunner {
     fn for_working_copy(root: &Path) -> Self {
-        let xml = format!(
-            r#"<?xml version="1.0" encoding="UTF-8"?>
+        let xml = r#"<?xml version="1.0" encoding="UTF-8"?>
 <info><entry kind="dir" path="." revision="1">
 <url>file:///repository/trunk</url>
 <repository><root>file:///repository</root><uuid>repo-uuid</uuid></repository>
 <wc-info><schedule>normal</schedule><depth>infinity</depth></wc-info>
 </entry></info>"#
-        );
+            .to_owned();
         Self {
             calls: Mutex::new(VecDeque::from([(
                 vec![

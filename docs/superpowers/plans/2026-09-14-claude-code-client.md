@@ -108,10 +108,10 @@
 - Consumes: the production `svn-ai` executable, real `svn`, `svnadmin`, and `svnlook` commands, and official Claude Code hook JSON shapes.
 - Produces: a repeatable Docker test whose final JSON is `svn_additions=10`, `ai_additions=8`, `non_ai_additions=2`, `ambiguous_additions=0`.
 
-- [ ] **Step 1: Write the failing shell acceptance test** that configures the client, installs hooks into a temporary settings file, sends PreToolUse, modifies ten lines, sends PostToolUse, manually rewrites two lines, commits revision 2, and runs `svn-ai stats`.
-- [ ] **Step 2: Run `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify-claude-svn-e2e.ps1`** and confirm the test fails before all CLI behavior exists.
-- [ ] **Step 3: Complete only the wiring exposed by the acceptance failure**, keeping source snapshots local and verifying the finalized event file contains no source text.
-- [ ] **Step 4: Re-run the acceptance test** and confirm the real SVN revision reports 10 total additions, 8 AI additions, 2 non-AI additions, and 0 ambiguous additions.
-- [ ] **Step 5: Update README** with installation, configuration, Claude settings, local validation steps, and explicit limitations for Bash and centralized aggregation.
-- [ ] **Step 6: Run `cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test --workspace`, the previous SVN round trip, and the new Claude-hook SVN round trip.**
-- [ ] **Step 7: Commit** with message `test: verify automatic Claude to SVN attribution`.
+- [x] **Step 1: Write the failing shell acceptance test** that configures the client, installs hooks into a temporary settings file, sends PreToolUse, modifies ten lines, sends PostToolUse, manually rewrites two lines, commits revision 2, and runs `svn-ai stats`.
+- [x] **Step 2: Run `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify-claude-svn-e2e.ps1`** and confirm the test fails before all CLI behavior exists.
+- [x] **Step 3: Complete only the wiring exposed by the acceptance failure**, keeping source snapshots local and verifying the finalized event file contains no source text.
+- [x] **Step 4: Re-run the acceptance test** and confirm the real SVN revision reports 10 total additions, 8 AI additions, 2 non-AI additions, and 0 ambiguous additions.
+- [x] **Step 5: Update README** with installation, configuration, Claude settings, local validation steps, and explicit limitations for Bash and centralized aggregation.
+- [x] **Step 6: Run `cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test --workspace`, the previous SVN round trip, and the new Claude-hook SVN round trip.**
+- [x] **Step 7: Commit** with message `test: verify automatic Claude to SVN attribution`.
