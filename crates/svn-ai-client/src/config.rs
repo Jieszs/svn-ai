@@ -52,6 +52,7 @@ impl<'de> Deserialize<'de> for FingerprintSecret {
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ClientConfig {
+    pub device_id: String,
     pub svn_username: String,
     pub fingerprint_secret: FingerprintSecret,
     pub svn_executable: PathBuf,

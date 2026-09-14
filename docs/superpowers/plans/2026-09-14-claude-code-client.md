@@ -71,11 +71,11 @@
 - Consumes: Claude hook JSON, `ClientConfig`, `EventStore`, `SvnClient`, `diff_files`, and protocol `AttributionEvent`.
 - Produces: `HookInput`, `HookProcessor::process`, and `HookOutcome::{Captured, Finalized, Cancelled, Ignored}`.
 
-- [ ] **Step 1: Write failing tests** for official PreToolUse/PostToolUse/PostToolUseFailure JSON shapes, Edit/Write target extraction, a missing file before Write, a ten-line change, failed-tool cancellation, unsupported tools, outside-SVN files, and event JSON privacy.
-- [ ] **Step 2: Run `cargo test -p svn-ai --test hook`** and confirm failure because hook processing is missing.
-- [ ] **Step 3: Implement the lifecycle** keyed by digests of `session_id` and `tool_use_id`, reading file contents only before and after the tool and emitting protocol events only after success.
-- [ ] **Step 4: Run `cargo test -p svn-ai --test hook`** and confirm all hook tests pass.
-- [ ] **Step 5: Commit** with message `feat: capture Claude Code file edits`.
+- [x] **Step 1: Write failing tests** for official PreToolUse/PostToolUse/PostToolUseFailure JSON shapes, Edit/Write target extraction, a missing file before Write, a ten-line change, failed-tool cancellation, unsupported tools, outside-SVN files, and event JSON privacy.
+- [x] **Step 2: Run `cargo test -p svn-ai --test hook`** and confirm failure because hook processing is missing.
+- [x] **Step 3: Implement the lifecycle** keyed by digests of `session_id` and `tool_use_id`, reading file contents only before and after the tool and emitting protocol events only after success.
+- [x] **Step 4: Run `cargo test -p svn-ai --test hook`** and confirm all hook tests pass.
+- [x] **Step 5: Commit** with message `feat: capture Claude Code file edits`.
 
 ### Task 4: Hook installer and client CLI
 

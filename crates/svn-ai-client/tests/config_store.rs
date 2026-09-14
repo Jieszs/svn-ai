@@ -53,6 +53,7 @@ fn event(event_id: &str) -> AttributionEvent {
 fn configuration_round_trips_without_changing_the_key() {
     let home = tempdir().unwrap();
     let config = ClientConfig {
+        device_id: "device-1".to_owned(),
         svn_username: "zhengjie".to_owned(),
         fingerprint_secret: FingerprintSecret::parse(
             "0707070707070707070707070707070707070707070707070707070707070707",
