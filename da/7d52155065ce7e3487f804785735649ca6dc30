@@ -1,0 +1,35 @@
+crates/svn-ai-client/src/lib.rs
+  s_ffb4fb4f8482bd::t_a4830b6f494c3f 1-2,4-5
+  s_ffb4fb4f8482bd::t_1f91d3c6ea1a82 3
+crates/svn-ai-client/tests/config_store.rs
+  s_ffb4fb4f8482bd::t_1f91d3c6ea1a82 1-168
+crates/svn-ai-client/Cargo.toml
+  s_ffb4fb4f8482bd::t_1f91d3c6ea1a82 1-19
+Cargo.toml
+  s_ffb4fb4f8482bd::t_1f91d3c6ea1a82 3,22,28
+crates/svn-ai-client/src/store.rs
+  s_ffb4fb4f8482bd::t_a4830b6f494c3f 1-217
+docs/superpowers/plans/2026-09-14-claude-code-client.md
+  s_ffb4fb4f8482bd::t_dd50459ddc8c1d 1-38,44-117
+  s_ffb4fb4f8482bd::t_628bf600728bcc 39-43
+crates/svn-ai-client/src/config.rs
+  s_ffb4fb4f8482bd::t_a4830b6f494c3f 1-84
+Cargo.lock
+  s_ffb4fb4f8482bd::t_6a1703db96bd96 76-81,196-223,280-288,364-380,420-425,450-476,538-543,550-562,632-644,689-694
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "da7d52155065ce7e3487f804785735649ca6dc30",
+  "prompts": {},
+  "sessions": {
+    "s_ffb4fb4f8482bd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a040f6-fda5-7f10-a52f-4d3c76f0ab4b",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "zhengjie <601116847@qq.com>"
+    }
+  }
+}
