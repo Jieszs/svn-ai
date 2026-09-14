@@ -1,0 +1,29 @@
+README.md
+  s_ffb4fb4f8482bd::t_8a93a55ab07819 11,16,19,35-80,102-111,116
+scripts/verify-claude-svn-e2e.ps1
+  s_ffb4fb4f8482bd::t_fba3e38659d4fc 1-25
+tests/e2e/claude_hook_svn_round_trip.sh
+  s_ffb4fb4f8482bd::t_fba3e38659d4fc 1-97
+docs/superpowers/plans/2026-09-14-claude-code-client.md
+  s_ffb4fb4f8482bd::t_09e62da141a2a1 111-113
+  s_ffb4fb4f8482bd::t_8a93a55ab07819 114-115
+  s_ffb4fb4f8482bd::t_7bc7be2cd9493a 116
+crates/svn-ai-client/tests/hook.rs
+  s_ffb4fb4f8482bd::t_488d5f3db60a32 18,24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "85b6f08485d07772f85c7ff8d93df2b745b654a7",
+  "prompts": {},
+  "sessions": {
+    "s_ffb4fb4f8482bd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a040f6-fda5-7f10-a52f-4d3c76f0ab4b",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "zhengjie <601116847@qq.com>"
+    }
+  }
+}
