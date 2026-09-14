@@ -54,11 +54,11 @@
 - Consumes: the existing `CommandRunner` boundary.
 - Produces: `SvnClient::{new, with_runner, discover}` and `WorkingCopyInfo { root_path, repository_uuid, repository_root_url, repository_path_prefix, base_revision }`, plus `WorkingCopyInfo::repo_path(&Path)`.
 
-- [ ] **Step 1: Write failing tests** using real Subversion 1.7 XML fixtures for normal roots, nested targets, URL escaping, paths containing spaces/non-ASCII text, files not yet created by Write, targets outside the working copy, command errors, and malformed XML.
-- [ ] **Step 2: Run `cargo test -p svn-ai-svn --test client`** and confirm failure because `SvnClient` is missing.
-- [ ] **Step 3: Implement upward working-copy discovery and XML parsing** with exact `svn info --xml --depth empty <target>` argument tests.
-- [ ] **Step 4: Run `cargo test -p svn-ai-svn --test client`** and confirm all discovery tests pass.
-- [ ] **Step 5: Commit** with message `feat: discover SVN working copies`.
+- [x] **Step 1: Write failing tests** using real Subversion 1.7 XML fixtures for normal roots, nested targets, URL escaping, paths containing spaces/non-ASCII text, files not yet created by Write, targets outside the working copy, command errors, and malformed XML.
+- [x] **Step 2: Run `cargo test -p svn-ai-svn --test client`** and confirm failure because `SvnClient` is missing.
+- [x] **Step 3: Implement upward working-copy discovery and XML parsing** with exact `svn info --xml --depth empty <target>` argument tests.
+- [x] **Step 4: Run `cargo test -p svn-ai-svn --test client`** and confirm all discovery tests pass.
+- [x] **Step 5: Commit** with message `feat: discover SVN working copies`.
 
 ### Task 3: Claude Code hook transaction lifecycle
 

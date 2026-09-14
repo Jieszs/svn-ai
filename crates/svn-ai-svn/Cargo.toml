@@ -7,6 +7,12 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
+percent-encoding.workspace = true
+quick-xml.workspace = true
+serde.workspace = true
 svn-ai-core = { path = "../svn-ai-core" }
 svn-ai-protocol = { path = "../svn-ai-protocol" }
 thiserror.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
