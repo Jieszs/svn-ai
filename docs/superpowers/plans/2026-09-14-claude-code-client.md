@@ -90,12 +90,12 @@
 - Produces commands: `svn-ai configure`, `svn-ai install-hooks`, `svn-ai hook`, `svn-ai status --json`, `svn-ai events --json`, and `svn-ai stats --repository <PATH> --revision <N> --svnlook <PATH> --json`.
 - Installs three command hooks with matcher `Edit|Write`: PreToolUse, PostToolUse, and PostToolUseFailure.
 
-- [ ] **Step 1: Write failing settings tests** proving unrelated Claude settings and hooks are preserved, exact duplicate SVN AI hooks are not added twice, executable/home paths with spaces are safely quoted, and a backup is created before modifying an existing file.
-- [ ] **Step 2: Write failing CLI tests** proving configure/status/events output, stdin hook processing, hook failures exit zero with a recorded diagnostic, and stats consume locally stored events.
-- [ ] **Step 3: Run `cargo test -p svn-ai --test settings --test cli`** and confirm failures because the installer and executable are absent.
-- [ ] **Step 4: Implement settings merge and CLI commands** without changing the user's real Claude settings during tests.
-- [ ] **Step 5: Run `cargo test -p svn-ai --test settings --test cli`** and confirm all client command tests pass.
-- [ ] **Step 6: Commit** with message `feat: add Claude Code hook installer and client CLI`.
+- [x] **Step 1: Write failing settings tests** proving unrelated Claude settings and hooks are preserved, exact duplicate SVN AI hooks are not added twice, executable/home paths with spaces are safely quoted, and a backup is created before modifying an existing file.
+- [x] **Step 2: Write failing CLI tests** proving configure/status/events output, settings installation, and that malformed stdin hook input exits zero with a sanitized recorded diagnostic. The real `stats` command boundary is exercised in Task 5 because it requires a repository rather than a command mock.
+- [x] **Step 3: Run `cargo test -p svn-ai --test settings --test cli`** and confirm failures because the installer and executable are absent.
+- [x] **Step 4: Implement settings merge and CLI commands** without changing the user's real Claude settings during tests.
+- [x] **Step 5: Run `cargo test -p svn-ai --test settings --test cli`** and confirm all client command tests pass.
+- [x] **Step 6: Commit** with message `feat: add Claude Code hook installer and client CLI`.
 
 ### Task 5: Real SVN automatic-capture acceptance test
 
