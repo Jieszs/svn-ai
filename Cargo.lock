@@ -616,6 +616,7 @@ dependencies = [
  "svn-ai-protocol",
  "tempfile",
  "thiserror",
+ "windows-sys",
 ]
 
 [[package]]

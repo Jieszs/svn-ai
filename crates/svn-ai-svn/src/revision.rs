@@ -136,7 +136,7 @@ impl<R: CommandRunner> SvnLook<R> {
 
     fn text(&self, args: &[OsString]) -> Result<String, SvnLookError> {
         let bytes = self.bytes(args)?;
-        let text = String::from_utf8(bytes).map_err(|_| SvnLookError::NonUtf8Output {
+        let text = decode_command_text(&bytes).ok_or_else(|| SvnLookError::NonUtf8Output {
             command: display_command(&self.executable, args),
         })?;
         Ok(text.trim_end_matches(['\r', '\n']).to_owned())
@@ -179,6 +179,67 @@ fn display_command(executable: &std::path::Path, args: &[OsString]) -> String {
         .join(" ")
 }
 
+fn decode_command_text(bytes: &[u8]) -> Option<String> {
+    if let Ok(text) = std::str::from_utf8(bytes) {
+        return Some(text.to_owned());
+    }
+
+    #[cfg(windows)]
+    {
+        decode_windows_command_text(bytes)
+    }
+    #[cfg(not(windows))]
+    {
+        None
+    }
+}
+
+#[cfg(windows)]
+fn decode_windows_command_text(bytes: &[u8]) -> Option<String> {
+    use windows_sys::Win32::{
+        Globalization::{GetACP, MB_ERR_INVALID_CHARS, MultiByteToWideChar},
+        System::Console::GetConsoleOutputCP,
+    };
+
+    let byte_count = i32::try_from(bytes.len()).ok()?;
+    let code_pages = unsafe { [GetConsoleOutputCP(), GetACP()] };
+    for (index, code_page) in code_pages.into_iter().enumerate() {
+        if code_page == 0 || (index == 1 && code_page == code_pages[0]) {
+            continue;
+        }
+
+        let wide_count = unsafe {
+            MultiByteToWideChar(
+                code_page,
+                MB_ERR_INVALID_CHARS,
+                bytes.as_ptr(),
+                byte_count,
+                std::ptr::null_mut(),
+                0,
+            )
+        };
+        if wide_count == 0 {
+            continue;
+        }
+
+        let mut wide = vec![0_u16; wide_count as usize];
+        let written = unsafe {
+            MultiByteToWideChar(
+                code_page,
+                MB_ERR_INVALID_CHARS,
+                bytes.as_ptr(),
+                byte_count,
+                wide.as_mut_ptr(),
+                wide_count,
+            )
+        };
+        if written == wide_count {
+            return String::from_utf16(&wide).ok();
+        }
+    }
+    None
+}
+
 #[derive(Debug, Clone, PartialEq, Eq, Error)]
 pub enum SvnLookError {
     #[error("SVN revision must be greater than zero, got {0}")]
@@ -191,7 +252,7 @@ pub enum SvnLookError {
         exit_code: Option<i32>,
         stderr: String,
     },
-    #[error("`{command}` returned text that is not UTF-8")]
+    #[error("`{command}` returned text in an unsupported encoding")]
     NonUtf8Output { command: String },
     #[error(transparent)]
     Changed(#[from] ChangedParseError),

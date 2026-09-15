@@ -14,5 +14,8 @@ svn-ai-core = { path = "../svn-ai-core" }
 svn-ai-protocol = { path = "../svn-ai-protocol" }
 thiserror.workspace = true
 
+[target.'cfg(windows)'.dependencies]
+windows-sys = { workspace = true, features = ["Win32_Globalization", "Win32_System_Console"] }
+
 [dev-dependencies]
 tempfile.workspace = true

@@ -55,12 +55,70 @@ impl CommandRunner for FixtureRunner {
 }
 
 fn success(stdout: &str) -> CommandOutput {
+    success_bytes(stdout.as_bytes())
+}
+
+fn success_bytes(stdout: &[u8]) -> CommandOutput {
     CommandOutput {
         success: true,
         exit_code: Some(0),
-        stdout: stdout.as_bytes().to_vec(),
+        stdout: stdout.to_vec(),
         stderr: Vec::new(),
     }
+}
+
+#[cfg(windows)]
+#[test]
+fn decodes_windows_console_encoded_metadata_and_paths() {
+    use windows_sys::Win32::{Globalization::GetACP, System::Console::GetConsoleOutputCP};
+
+    let console_code_page = unsafe { GetConsoleOutputCP() };
+    let ansi_code_page = unsafe { GetACP() };
+    if console_code_page != 936 && ansi_code_page != 936 {
+        return;
+    }
+
+    let repository = "D:/svn/repository";
+    let runner = FixtureRunner::new(vec![
+        (&["uuid", repository], success("repo-uuid\n")),
+        (
+            &["author", "-r", "2", repository],
+            success_bytes(&[0xD5, 0xC5, 0xC8, 0xFD, 0x0A]),
+        ),
+        (
+            &["date", "-r", "2", repository],
+            success_bytes(&[
+                0x32, 0x30, 0x32, 0x36, 0x2D, 0x30, 0x39, 0x2D, 0x31, 0x35, 0x20, 0x30, 0x39, 0x3A,
+                0x33, 0x33, 0x3A, 0x32, 0x31, 0x20, 0x2B, 0x30, 0x38, 0x30, 0x30, 0x20, 0x28, 0xD6,
+                0xDC, 0xB6, 0xFE, 0x2C, 0x20, 0x31, 0x35, 0x20, 0x39, 0xD4, 0xC2, 0x20, 0x32, 0x30,
+                0x32, 0x36, 0x29, 0x0A,
+            ]),
+        ),
+        (
+            &["changed", "--copy-info", "-r", "2", repository],
+            success_bytes(&[
+                0x41, 0x20, 0x20, 0x20, 0x74, 0x72, 0x75, 0x6E, 0x6B, 0x2F, 0xBC, 0xC6, 0xCB, 0xE3,
+                0xC6, 0xF7, 0x2E, 0x70, 0x79, 0x0A,
+            ]),
+        ),
+        (
+            &["cat", "-r", "2", repository, "trunk/计算器.py"],
+            success("print('ok')\n"),
+        ),
+    ]);
+    let svnlook = SvnLook::with_runner(PathBuf::from("fixture-svnlook"), runner);
+
+    let event = svnlook
+        .read_revision(Path::new(repository), 2, &FingerprintKey::new([7; 32]))
+        .expect("Windows console text should decode without losing Chinese metadata");
+
+    assert_eq!(event.author, "张三");
+    assert_eq!(
+        event.committed_at,
+        "2026-09-15 09:33:21 +0800 (周二, 15 9月 2026)"
+    );
+    assert_eq!(event.changes[0].path.as_str(), "trunk/计算器.py");
+    svnlook.runner().assert_exhausted();
 }
 
 #[test]
